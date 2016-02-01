@@ -31,6 +31,7 @@ def post_new(request):
             post = form.save(commit=False)  # commit responsible for it
             # save user as author
             post.author = request.user
+            post.published_date = timezone.now()
             post.save()
             # Immediate redirect to created form detail
             return redirect('blog.views.post_detail', post_id=post.pk)
