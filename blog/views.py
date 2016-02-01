@@ -21,13 +21,22 @@ def post_detail(request, post_id):
 # For creating new post
 def post_new(request):
     if request.method == "POST":
+        # Client try to refill/change the form
+        # 'load' some data from POST
         form = FormForPost(request.POST)
+        # form validation
         if form.is_valid():
-            post = form.save(commit=False)
+            # We don't want to save form yet
+            # WE add author at the next step
+            post = form.save(commit=False)  # commit responsible for it
+            # save user as author
             post.author = request.user
             post.save()
+            # Immediate redirect to created form detail
             return redirect('blog.views.post_detail', post_id=post.pk)
     else:
+        # This is the case, when we fill in our form FIRST TIME
+        # We wanted to get clear form
         form = FormForPost()
     return render(request, 'blog/post_edit.html', {'form': form})
 
