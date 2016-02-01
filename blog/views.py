@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post
-from .forms	import PostForm
+from .forms	import FormForPost
 
 
 def post_list(request):
@@ -17,21 +17,21 @@ def post_detail(request, post_id):
 
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = FormForPost(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.save()
             return redirect('blog.views.post_detail', post_id=post.pk)
     else:
-        form = PostForm()
+        form = FormForPost()
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = FormForPost(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -39,6 +39,6 @@ def post_edit(request, post_id):
             post.save()
             return redirect('blog.views.post_detail', post_id=post.pk)
     else:
-        form = PostForm(instance=post)
+        form = FormForPost(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
