@@ -1,12 +1,12 @@
 DjangoGirls
 
-One of my learning projects
+One of my learning projects.
 
-Try to fully understand what's going on 
+Try to fully understand what's going on.
 
-And have some experienceand fun
+And have some experience and fun.
 
-All in all,this is just siimple blog
+All in all,this is just siimple blog.
 
 
 
