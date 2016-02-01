@@ -41,7 +41,7 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
-# For correcting post
+# For correcting existed post
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == "POST":
