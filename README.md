@@ -11,4 +11,4 @@ All in all,this is just siimple blog.
 
 
 P.S. 
-Only with the book.Maybe< I will extend it using "Django Girls Tutorial: Extensions"
+Only with the book.Maybe, I will extend it using "Django Girls Tutorial: Extensions"
